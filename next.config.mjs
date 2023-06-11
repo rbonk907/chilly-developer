@@ -1,8 +1,12 @@
-import rehypeHighlight from 'rehype-highlight';
 import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeMdxCodeProps from 'rehype-mdx-code-props';
+import toc from '@jsdevtools/rehype-toc';
+import rehypeSlug from 'rehype-slug';
+import rehypeParse from 'rehype-parse';
+import rehypeStringify from 'rehype-stringify';
+import rehypeImgSize from 'rehype-img-size';
 import remarkFrontmatter from 'remark-frontmatter';
-import rehypePrism from 'rehype-prism-plus';
+import remarkRehype from 'remark-rehype';
+
 import * as NextMDX from '@next/mdx';
 import fs from 'fs';
 import path from 'path';
@@ -37,8 +41,8 @@ const options = {
 
 const withMDX = NextMDX.default({
     options: {
-        remarkPlugins: [remarkFrontmatter],
-        rehypePlugins: [[rehypePrettyCode, options]],
+        remarkPlugins: [remarkFrontmatter, remarkRehype],
+        rehypePlugins: [[rehypePrettyCode, options], rehypeImgSize, rehypeSlug, [toc, { headings: ["h2", "h3"]}]],
     },
 });
 export default withMDX(nextConfig);
