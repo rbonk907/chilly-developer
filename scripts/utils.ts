@@ -22,3 +22,10 @@ export const getArticles = () => {
 
     return articles;
 }
+
+export const getArticleByID = (slug: string) => {
+    const articles = getArticles();
+    const article = articles.find((article) => article?.slug === slug);
+
+    return article;
+}
