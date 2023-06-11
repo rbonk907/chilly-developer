@@ -1,5 +1,17 @@
 import './globals.css'
-import { rubik, chivo_mono } from '@/scripts/fonts'
+import { Chivo_Mono, Lexend } from "next/font/google";
+
+export const chivo_mono = Chivo_Mono({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-chivo-mono',
+});
+
+export const lexend = Lexend({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lexend',
+});
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${rubik.variable} ${chivo_mono.variable}`}>
+    <html lang="en" className={`${lexend.variable} ${chivo_mono.variable}`}>
       <body>
         {children}
       </body>
