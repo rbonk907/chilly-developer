@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         },
         nav: ({ children, ...props}) => {
             return (
-                <aside className="order-last w-80 h-full sticky top-[5.75rem]">
+                <aside className="order-last w-80 h-full sticky top-0 pt-12">
                     <nav {...props}>
                         { children }
                     </nav>

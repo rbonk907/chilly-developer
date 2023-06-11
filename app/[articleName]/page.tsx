@@ -1,15 +1,16 @@
 import { useMDXComponents } from "@/mdx-components";
-import { getArticles } from "@/scripts/utils";
+import { getArticleByID, getArticles } from "@/scripts/utils";
 import dynamic from "next/dynamic";
 import MDX from "./article-two.mdx";
 import Image from "next/image";
+import Link from "next/link";
 import { MDXComponents } from "mdx/types";
 
 export async function generateStaticParams() {
     const articles = getArticles();
 
     return articles.map((article) => ({
-        articleName: article?.slug,
+        articleName: article?.slug
     }));
 }
 
@@ -25,10 +26,23 @@ const MDXComponents: MDXComponents = {
 export default function Page({ params }: { params: { articleName: string }}) {
     const { articleName } = params;
     const Article: any = dynamic(() => import(`./${articleName}.mdx`));
+    const articleData = getArticleByID(articleName)?.data;
 
     return (
-        <main className="w-full max-w-6xl mx-auto font-sans flex gap-x-32">
-            <Article components={useMDXComponents(MDXComponents)} />
-        </main>
+        <>
+            <div className="bg-indigo-100 h-48">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-base flex gap-x-3 text-stone-500">
+                        <Link href="/">Home</Link>
+                        <span>&gt;</span>
+                        <Link href="/">Posts</Link>
+                    </div>
+                    <h1 className="text-4xl font-extrabold text-indigo-800 mt-2">{ articleData?.title }</h1>
+                </div>
+            </div>
+            <main className="w-full max-w-6xl mx-auto font-sans flex gap-x-32">
+                <Article components={useMDXComponents(MDXComponents)} />
+            </main>
+        </>
     );
 }
