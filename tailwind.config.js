@@ -17,6 +17,15 @@ module.exports = {
         sans: ['var(--font-lexend)'],
         mono: ['var(--font-chivo-mono)'],
       },
+      dropShadow: {
+        lgBlue: [
+          '0 10px 8px rgba(96, 165, 250, 0.04)',
+          '0 4px 3px rgba(96, 165, 250, 0.1)'
+        ]
+      },
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+      },
     },
   },
   plugins: [],

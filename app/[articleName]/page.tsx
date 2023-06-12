@@ -30,17 +30,17 @@ export default function Page({ params }: { params: { articleName: string }}) {
 
     return (
         <>
-            <div className="bg-indigo-100 h-48">
+            <div className="bg-blue-100 h-48">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-base flex gap-x-3 text-stone-500">
                         <Link href="/">Home</Link>
                         <span>&gt;</span>
-                        <Link href="/">Posts</Link>
+                        <Link href="/">Articles</Link>
                     </div>
                     <h1 className="text-4xl font-extrabold text-indigo-800 mt-2">{ articleData?.title }</h1>
                 </div>
             </div>
-            <main className="w-full max-w-6xl mx-auto font-sans flex gap-x-32">
+            <main className="w-full max-w-6xl mx-auto font-sans flex items-stretch gap-x-32 px-5">
                 <Article components={useMDXComponents(MDXComponents)} />
             </main>
         </>

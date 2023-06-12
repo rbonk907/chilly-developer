@@ -16,7 +16,7 @@ export default function Article(props: ArticleProps) {
     return (
         <article className="p-6 pl-4">
             <Link href={`/${article?.slug}`}>
-                <h3 className="text-2xl font-bold">{article?.data.title}</h3>
+                <h3 className="text-2xl font-bold text-blue-800">{article?.data.title}</h3>
                 <p>{article?.data.excerpt}</p>
                 <span className="font-bold">Read more</span>
             </Link>
