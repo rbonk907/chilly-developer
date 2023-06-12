@@ -1,3 +1,5 @@
+import Footer from './components/Footer';
+import Header from './components/Header';
 import './globals.css'
 import { Chivo_Mono, Lexend } from "next/font/google";
 
@@ -27,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${lexend.variable} ${chivo_mono.variable}`}>
       <body>
         {children}
+        <Footer />
       </body>
     </html>
   )
