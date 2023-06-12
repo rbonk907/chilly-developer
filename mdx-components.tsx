@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import clifford from "./images/clifford.jpeg";
+import { BsHeart, BsShare } from "react-icons/bs"
 
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -17,7 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         },
         p: ({ children, ...props}) => {
             return (
-                <p {...props} className="mb-6 text-[1.125rem] text-stone-700">
+                <p {...props} className="mb-6 text-[1.125rem] text-stone-700 text-justify">
                     { children }
                 </p>
             );
@@ -45,10 +46,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         },
         nav: ({ children, ...props}) => {
             return (
-                <aside className="order-last w-80 h-full sticky top-0 pt-12">
-                    <nav {...props}>
-                        { children }
-                    </nav>
+                <aside className="hidden order-last w-80 md:flex flex-col justify-between">
+                    <div className="sticky top-0 pt-12">
+                        <nav {...props}>
+                            { children }
+                        </nav>
+                    </div>
+                    <div className="flex gap-x-4 w-fit mx-auto sticky bottom-12">
+                        <BsHeart className="w-5 h-5 text-gray-500"/>
+                        <BsShare className="w-5 h-5 text-gray-500" />
+                    </div>
                 </aside>
             )
         },
